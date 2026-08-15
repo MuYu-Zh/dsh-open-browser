@@ -1,0 +1,3 @@
+- insert:
+    - id: open-browser
+      name: dsh-open-browser

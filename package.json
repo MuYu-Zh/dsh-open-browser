@@ -1,0 +1,32 @@
+{
+  "name": "dsh-open-browser",
+  "version": "0.1.0",
+  "description": "Automatically opens the dsh Web UI in your browser (Chrome/Chromium first, system default as fallback) once the server is ready. Works on Windows, macOS, and Linux.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "browser",
+    "open-browser"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
