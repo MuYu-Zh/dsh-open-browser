@@ -10,7 +10,8 @@
   "files": [
     "index.js",
     "cordis.patch.yml",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "keywords": [
     "dsh-plugin",
@@ -21,6 +22,14 @@
     "open-browser"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MuYu-Zh/dsh-open-browser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MuYu-Zh/dsh-open-browser/issues"
+  },
+  "homepage": "https://github.com/MuYu-Zh/dsh-open-browser#readme",
   "engines": {
     "node": ">=18"
   },
