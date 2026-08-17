@@ -24,10 +24,10 @@
 要求已安装 `dsh` CLI（见[官方文档](https://github.com/deepseek-ai/deepseek-harness)）。
 
 ```sh
-# 从 GitHub 安装（源码安装，仓库需带 prepare 构建脚本并授权构建）
-dsh plugin --profile <name> add github:<you>/dsh-open-browser
+# 从 GitHub 安装（推荐；仓库已包含预构建 index.js，无需再构建）
+dsh plugin --profile <name> add github:MuYu-Zh/dsh-open-browser
 
-# 或从 npm 安装（推荐，安装的是预构建产物）
+# 或从 npm 安装（需已发布到 npm registry）
 dsh plugin --profile <name> add dsh-open-browser
 
 # 或从 tarball 安装
@@ -63,6 +63,13 @@ dsh plugin --profile <name> remove dsh-open-browser
 2. 读取 `ctx.webServer.port` 拼出 `http://127.0.0.1:<port>`；
 3. 等待 Loader 结算（与官方就绪日志同一语义）后，按平台候选链在浏览器中打开 URL。
 
+## npm 包结构
+
+- `index.js`：预构建产物，安装后直接可用
+- `cordis.patch.yml`：DSH bundle 装配声明
+- `src/open-browser.ts`：TypeScript 源码
+- `README.md`：本文档
+
 ## 开发
 
 ```sh
@@ -70,6 +77,9 @@ dsh plugin --profile <name> remove dsh-open-browser
 # 修改源码后，按需重新转译：
 #   npx tsc --target es2022 --module esnext --moduleResolution bundler src/open-browser.ts --outFile index.js
 # （转译前请移除 @deepseek-ai/cordis 的类型导入）
+
+# 本地校验 npm 包内容
+npm pack --dry-run --ignore-scripts
 ```
 
 ## 许可
@@ -92,7 +102,7 @@ DSH｜dsh-open-browser｜dsh Web UI 启动后自动用浏览器打开页面（�
 > 非官方项目，由社区成员独立开发和维护。
 
 **项目地址：**
-https://github.com/<you>/dsh-open-browser
+https://github.com/MuYu-Zh/dsh-open-browser
 
 **项目介绍：**
 dsh-open-browser 是一个 DeepSeek Harness 插件：dsh Web UI 服务器成功启动后，
@@ -104,7 +114,7 @@ dsh-open-browser 是一个 DeepSeek Harness 插件：dsh Web UI 服务器成功�
 **与 DSH 的集成方式：**
 插件注入 webRuntime 服务并等待 Loader 结算，读取 ctx.webServer.port 拼出页面地址；
 通过 cordis.patch.yml 以 dsh.bundle 组合包形式安装：
-`dsh plugin --profile <name> add github:<you>/dsh-open-browser`
+`dsh plugin --profile <name> add github:MuYu-Zh/dsh-open-browser`
 
 **截图：**
 （添加 dsh 启动后浏览器自动打开页面的截图/GIF）
